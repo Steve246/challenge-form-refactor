@@ -1,4 +1,4 @@
-export const ProductService = () => {
+const ProductService = () => {
   const addProduct = (newProduct) => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -14,3 +14,5 @@ export const ProductService = () => {
     addProduct,
   };
 };
+
+export default ProductService;
