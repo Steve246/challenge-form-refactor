@@ -3,7 +3,7 @@ export const ProductService = () => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (newProduct.id !== "") {
-          resolve("Add Produc Success");
+          resolve("Add Product Success");
         } else {
           reject(new Error("Oops...."));
         }

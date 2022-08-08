@@ -5,7 +5,7 @@ class ProductForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLearning: false,
+      isLoading: false,
       data: {
         id: "",
         productName: "",
@@ -16,7 +16,7 @@ class ProductForm extends Component {
   }
 
   handleOnInput = (e) => {
-    const key = e.target.key;
+    const key = e.target.name;
     const value = e.target.value;
 
     this.setState({
