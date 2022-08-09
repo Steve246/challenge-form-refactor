@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
-import MyComponent from "./test/test";
-import ProductForm from "./Component/ProductForm";
+// import MyComponent from "./test/test";
+import ProductForm from "./features/product/ProductForm";
 
 function App() {
   return (

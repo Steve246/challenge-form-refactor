@@ -1,5 +1,8 @@
 import React, { Component } from "react";
-import { ProductService } from "../Service/ProductService";
+import { ProductService } from "../../Service/ProductService";
+import FormButton from "../../shared/Component/FormButton/FormButton";
+import FormContainer from "../../shared/Component/FormContainer/FormContainer";
+import FormInput from "../../shared/Component/FormInput/FormInput";
 
 class ProductForm extends Component {
   constructor(props) {
@@ -15,10 +18,7 @@ class ProductForm extends Component {
     this.productService = ProductService();
   }
 
-  handleOnInput = (e) => {
-    const key = e.target.name;
-    const value = e.target.value;
-
+  handleInputChange = (key, value) => {
     this.setState({
       data: {
         ...this.state.data,
@@ -55,30 +55,41 @@ class ProductForm extends Component {
 
   render() {
     return (
-      <div>
-        <label> ID </label>
-        <input
-          name="id"
-          type="text"
+      <FormContainer errorMessage={this.state.error ? "OOps" : ""}>
+        <FormInput
+          id="id"
+          label="ID"
           value={this.state.data.id}
-          onChange={this.handleOnInput}
+          onChange={this.handleInputChange}
         />
 
-        <label> Product Name </label>
-        <input
-          name="productName"
-          type="text"
+        {/* <label> Product Name </label>
+          <input
+            name="productName"
+            type="text"
+            value={this.state.data.productName}
+            onChange={this.handleOnInput}
+          /> */}
+
+        <FormInput
+          id="productName"
+          label="Product Name"
           value={this.state.data.productName}
-          onChange={this.handleOnInput}
+          onChange={this.handleInputChange}
         />
-        <button
-          disabled={this.state.isLoading}
+        {/* <button
+            disabled={this.state.isLoading}
+            onClick={this.handleSaveProduct}
+          >
+            Save
+          </button> */}
+
+        <FormButton
+          label="save"
           onClick={this.handleSaveProduct}
-        >
-          Save
-        </button>
-        {this.state.error && <div> Oops... </div>}
-      </div>
+          disabled={this.state.isLoading}
+        />
+      </FormContainer>
     );
   }
 }
