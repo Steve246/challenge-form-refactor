@@ -3,10 +3,11 @@ import { ProductService } from "../../Service/ProductService";
 import FormButton from "../../shared/Component/FormButton/FormButton";
 import FormContainer from "../../shared/Component/FormContainer/FormContainer";
 import FormInput from "../../shared/Component/FormInput/FormInput";
+import { DepsContext } from "../../shared/DepsContext";
 
 class ProductForm extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
     this.state = {
       isLoading: false,
       data: {
@@ -15,7 +16,7 @@ class ProductForm extends Component {
       },
       error: null,
     };
-    this.productService = ProductService();
+    this.productService = context.productService;
   }
 
   handleInputChange = (key, value) => {
@@ -93,5 +94,7 @@ class ProductForm extends Component {
     );
   }
 }
+
+ProductForm.contextType = DepsContext;
 
 export default ProductForm;
